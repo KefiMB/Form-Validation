@@ -19,7 +19,21 @@ function handleSubmit(event) {
     event.preventDefault();
 
     let isValid = true;
-    let inValdi = false;
+    inputs.forEach(input => {
+        const isInputValid = validateInput(input);
+        if (!isInputValid) {
+          isValid = false;
+        }
+      });
+      if (isValid){
+        console.log('Submittion successful');
+      }
 }
-function showError ()
+function showError(input, message) {
+    const errorMessage = input.parentElement.querySelector('.error-message');
+    errorMessage.textContent = message;
+    input.classList.add('invalid');
+    input.focus(); 
+}
 
+// Part 3
